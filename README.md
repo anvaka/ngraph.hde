@@ -1,13 +1,19 @@
 # ngraph.hde
 
-This package implements high dimensional graph layout with `O(|V| +|E|)` time complexity.
+This package implements high dimensional graph layout with `O(m*(|V| + |E|))` time complexity.
 
 While the layout doesn't necessary look appealing for all possible graphs, this package
 provides amazing initial configuration for nodes for subsequent refinement by `ngraph.forcelayout`
 or `d3-force`.
 
 Since force based layout convergence speed depends on initial configuration, this library
-can provide significant speed boost for large graphs layout.
+can provide significant boost for large graphs layout. 
+
+See the demo here: https://anvaka.github.io/ngraph.hde/
+
+![demo](https://i.imgur.com/G25jKM1.png)
+
+Demo's source code is [here](https://github.com/anvaka/ngraph.hde/tree/master/demo)
 
 ## How does it work?
 

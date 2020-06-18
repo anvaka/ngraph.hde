@@ -1,24 +1,19 @@
-# graph starter
+# ngraph.hde demo
 
-A simple starter project to build your own graph algorithm exploration. 
+This folder contains a demo of [ngraph.hde](https://github.com/anvaka/ngraph.hde).
 
-![demo](https://i.imgur.com/zqXvkvW.gif)
+It shows initial layout positions guessed by ngraph.hde.
 
-It allows you to load any graph from a .dot file, do a basic graph layout, and supports pan/zoom interaction.
-The rest is up to you. 
+It allows you to chose a graph from [University of Florida Sparse Matrix Collection](https://aws.amazon.com/datasets/university-of-florida-sparse-matrix-collection/), and measures performance of initialization.
 
-I was using this as a skeleton for some of my graph explorations and I hope you find this useful as a first
-graph setup.
+It also shows how to use these positions as the feed to [ngraph.forcelayout](https://github.com/anvaka/ngraph.forcelayout) or [d3-force](https://github.com/d3/d3-force/).
+
+Oh you can also drop any .dot file into the browser window, and the tool will attempt to visualize it.
+
+Note: This is super basic example, created in couple hours. It may contain bugs but I hope it conveys the 
+main idea.
 
 Happy exploration!
-
-## Getting started
-
-First - you need to clone/fork this repository and then:
-
-```
-npm install
-```
 
 ### Compiles and hot-reloads for development
 ```
@@ -27,8 +22,6 @@ npm run serve
 
 This should render a simple graph and you can do some basic layout. You can drop `.dot` files into it
 to load new graphs.
-
-From this point - you are free to modify the project as you wish. 
 
 ### Compiles and minifies for production
 ```
@@ -41,10 +34,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## What's inside?
 
 * [ngraph.graph](https://github.com/anvaka/ngraph.graph) as a graph data structure
-* [ngraph.fromdot](https://github.com/anvaka/ngraph.fromdot) loads `.dot` files
-* [panzoom](https://github.com/anvaka/panzoom) for pan/zoom interaction
 * [ngraph.forcelayout](https://github.com/anvaka/ngraph.forcelayout) for the basic graph layout
-* [w-gl](https://github.com/anvaka/w-gl) - super duper obscure (and fast) WebGL renderer that can render dots and lines.
+* [d3-force](https://github.com/d3/d3-force/) for alternative graph layout
+* [w-gl](https://github.com/anvaka/w-gl) - super duper obscure (and fast) WebGL renderer.
 * vue.js powered UI and dev tools.
 
 ## Thanks!
