@@ -49,7 +49,7 @@ layout.getNodePosition(1); // returns [-0.7, 0.7]
 ```
 
 Current version of the library doesn't support graphs with multiple disconnected components.
-You'd have to first [find the connected components](https://github.com/anvaka/ngraph.graph/blob/master/examples/findConnectedComponents.js) and then use layout on connected parts.
+You'd have to first [find the connected components](https://github.com/anvaka/ngraph.hde/blob/master/demo/src/lib/findLargestComponent.js) and then use layout on connected parts.
 
 
 ### Options
