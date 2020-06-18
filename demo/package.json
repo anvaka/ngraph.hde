@@ -1,0 +1,36 @@
+{
+  "name": "graph-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.4.3",
+    "d3-force": "^2.0.1",
+    "miserables": "^2.0.0",
+    "ngraph.events": "^1.0.0",
+    "ngraph.forcelayout": "^1.0.0",
+    "ngraph.fromdot": "^6.0.0",
+    "ngraph.fromjson": "^3.0.0",
+    "ngraph.generators": "^19.0.0",
+    "ngraph.graph": "^19.1.0",
+    "query-state": "^4.3.0",
+    "vue": "^2.6.10",
+    "w-gl": "^0.12.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
