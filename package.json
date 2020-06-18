@@ -1,0 +1,36 @@
+{
+  "name": "ngraph.hde",
+  "version": "1.0.0",
+  "description": "High dimensional embedding of a graph",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anvaka/ngraph.hde.git"
+  },
+  "keywords": [
+    "graph",
+    "layout",
+    "hde",
+    "high",
+    "dimensional",
+    "embedding",
+    "embedding"
+  ],
+  "author": "Andrei Kashcha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anvaka/ngraph.hde/issues"
+  },
+  "homepage": "https://github.com/anvaka/ngraph.hde#readme",
+  "devDependencies": {
+    "miserables": "^2.0.0",
+    "ngraph.graph": "^19.1.0",
+    "tap": "^14.10.7"
+  },
+  "dependencies": {
+    "ngraph.random": "^1.0.0"
+  }
+}
