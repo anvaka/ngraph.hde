@@ -64,7 +64,7 @@ export default {
   data() {
     let graphs = getAvailableGraphs();
     return {
-      stepCount: 200,
+      stepCount: getStepCountFromAppState(),
       selectedGraph: appState.get('graph'),
       layouts,
       selectedLayout: getLayoutFromAppStateSafe(),
@@ -86,6 +86,11 @@ export default {
     }
     bus.off('stats', this.updateStats);
   }
+}
+
+function getStepCountFromAppState() {
+  let step = appState.get('step');
+  return (Number.isFinite(step) && step > 0) ? step : 200;
 }
 
 function getLayoutFromAppStateSafe() {
