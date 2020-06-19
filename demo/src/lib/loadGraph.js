@@ -1,10 +1,12 @@
 import createGraph from 'ngraph.graph';
 import miserables from 'miserables';
+import generate from 'ngraph.generators';
 
 let cache = simpleCache();
 
 export default function loadGraph(name) {
   if (name === 'Miserables') return Promise.resolve(miserables);
+  if (name === 'Binary') return Promise.resolve(generate.balancedBinTree(10));
 
   let mtxObject = cache.get(name);
   if (mtxObject) return Promise.resolve(renderGraph(mtxObject.links, mtxObject.recordsPerEdge));

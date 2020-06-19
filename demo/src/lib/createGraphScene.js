@@ -2,7 +2,6 @@ import {createScene} from 'w-gl';
 import LineCollection from './LineCollection';
 import PointCollection from './PointCollection';
 import bus from './bus';
-import getGraph from './getGraph';
 import createHighLayout from '../../../src/index'
 import createForceLayout from './createForceLayout';
 import findLargestComponent from './findLargestComponent';
@@ -19,7 +18,6 @@ export default function createGraphScene(canvas) {
   let layoutSteps = 0; // how many frames shall we run layout?
   let rafHandle;
 
-  loadGraph(getGraph());
   bus.on('load-graph', loadGraph);
 
   return {
@@ -32,6 +30,7 @@ export default function createGraphScene(canvas) {
     if (scene) {
       scene.dispose();
       scene = null
+      layoutSteps = 0;
       cancelAnimationFrame(rafHandle);
     }
     scene = initScene();
@@ -44,10 +43,19 @@ export default function createGraphScene(canvas) {
     let end = performance.now() - start;
     let time = Math.round(end) + 'ms';
 
+
+    let minX = Infinity, minY = Infinity;
+    let maxX = -Infinity, maxY = -Infinity;
     graph.forEachNode(node => {
       let pos = hde.getNodePosition(node.id);
-      layout.setNodePosition(node.id, pos[0] * 2.5, pos[1] * 2.5)
+      let x = pos[0] * 2.5;
+      let y = pos[1] * 2.5;
+      if (x < minX) minX = x; if (x > maxX) maxX = x;
+      if (y < minY) minY = y; if (y > maxY) maxY = y;
+      layout.setNodePosition(node.id, x, y)
     });
+
+    setSceneSize(Math.max(maxX - minX, maxY - minY));
     initUIElements();
 
     rafHandle = requestAnimationFrame(frame);
@@ -60,6 +68,15 @@ export default function createGraphScene(canvas) {
         linkCount: graph.getLinksCount()
       });
     }, 200);
+  }
+
+  function setSceneSize(sceneSize) {
+    scene.setViewBox({
+      left:  -sceneSize,
+      top:   -sceneSize,
+      right:  sceneSize,
+      bottom: sceneSize,
+    });
   }
 
   function runLayout(stepsCount) {
@@ -75,13 +92,6 @@ export default function createGraphScene(canvas) {
   function initScene() {
     let scene = createScene(canvas);
     scene.setClearColor(12/255, 41/255, 82/255, 1)
-    let initialSceneSize = 40;
-    scene.setViewBox({
-      left:  -initialSceneSize,
-      top:   -initialSceneSize,
-      right:  initialSceneSize,
-      bottom: initialSceneSize,
-    });
     return scene;
   }
   

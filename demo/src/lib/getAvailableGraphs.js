@@ -1,6 +1,7 @@
 export default function getAvailableGraphs() {
   return [
     'Miserables',
+    'Binary',
 'HB/blckhole',
 'Bai/rw5151',
 'HB/bcsstm13',

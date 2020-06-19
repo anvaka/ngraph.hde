@@ -26,6 +26,10 @@ import createGraphScene from './lib/createGraphScene';
 import getAvailableGraphs from './lib/getAvailableGraphs';
 import loadGraph from './lib/loadGraph';
 import bus from './lib/bus';
+import queryState from 'query-state';
+
+let layouts = ['ngraph.forcelayout', 'd3-force'];
+let appState = queryState({graph: 'Miserables'}, { useSearch: true });
 
 export default {
   name: 'app',
@@ -35,28 +39,35 @@ export default {
     },
     updateStats(stats) {
       this.stats = stats;
+    },
+
+    loadNewGraph(newGraph) {
+      this.loading = true;
+      this.stats = null;
+
+      loadGraph(newGraph).then(newGraph => {
+        bus.fire('load-graph', newGraph);
+        this.loading = false;
+      });
     }
   },
   watch: {
     selectedLayout(newLayout) {
+      appState.set('layout', newLayout);
       this.scene.selectLayout(newLayout);
     },
     selectedGraph(newGraph) {
-      this.loading = true;
-      this.stats = null;
-      loadGraph(newGraph).then(newGraph => {
-        bus.fire('load-graph', newGraph);
-        this.loading = false;
-      })
+      appState.set('graph', newGraph);
+      this.loadNewGraph(newGraph);
     }
   },
   data() {
     let graphs = getAvailableGraphs();
     return {
       stepCount: 200,
-      selectedGraph: graphs[0],
-      layouts: ['ngraph.forcelayout', 'd3-force'],
-      selectedLayout: 'ngraph.forcelayout',
+      selectedGraph: appState.get('graph'),
+      layouts,
+      selectedLayout: getLayoutFromAppStateSafe(),
       loading: false,
       stats: null,
       graphs
@@ -66,6 +77,7 @@ export default {
     const canvas = document.getElementById('cnv');
     this.scene = createGraphScene(canvas);
     bus.on('stats', this.updateStats);
+    this.loadNewGraph(this.selectedGraph);
   },
 
   beforeDestroy() {
@@ -74,6 +86,14 @@ export default {
     }
     bus.off('stats', this.updateStats);
   }
+}
+
+function getLayoutFromAppStateSafe() {
+  let layout = appState.get('layout');
+  if (layouts.indexOf(layout) > -1) {
+    return layout;
+  }
+  return layouts[0];
 }
 </script>
 
