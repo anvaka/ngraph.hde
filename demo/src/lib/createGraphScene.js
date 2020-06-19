@@ -26,7 +26,7 @@ export default function createGraphScene(canvas) {
     selectLayout
   };
 
-  function loadGraph(newGraph) {
+  function loadGraph(newGraph, desiredLayout) {
     if (scene) {
       scene.dispose();
       scene = null
@@ -35,6 +35,10 @@ export default function createGraphScene(canvas) {
     }
     scene = initScene();
     graph = findLargestComponent(newGraph);
+
+    if (desiredLayout && desiredLayout !== layoutName) {
+      layoutName = desiredLayout;
+    }
     // this is a standard force layout
     layout = createForceLayout(graph, layoutName);
     // This is our "initialization" bit with HDE

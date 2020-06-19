@@ -46,7 +46,7 @@ export default {
       this.stats = null;
 
       loadGraph(newGraph).then(newGraph => {
-        bus.fire('load-graph', newGraph);
+        bus.fire('load-graph', newGraph, this.selectedLayout);
         this.loading = false;
       });
     }
