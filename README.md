@@ -17,14 +17,14 @@ Demo's source code is [here](https://github.com/anvaka/ngraph.hde/tree/master/de
 
 ## How does it work?
 
-The package follows [Graph Drawing by High-Dimensional Embedding](http://www.wisdom.weizmann.ac.il/~harel/papers/highdimensionalGD.pdf) paper.
+The package follows [Graph Drawing by High-Dimensional Embedding](http://www.wisdom.weizmann.ac.il/~harel/papers/highdimensionalGD.pdf) paper by David Harel and Yehuda Koren.
 
 First, the graph is projected into `M`-dimensional space. In this space adjacent nodes are 
 close to each other. By default `M` has 50 dimensions.
 
 Then from this `M` dimensional space we crash graph back into 2D or 3D, or any other `D < M` where you want
-to visualize the graph. In this `D`-dimensional space we can visualize the graph, or use it as
-starting position for a force based layout.
+to visualize the graph. The "crash" is a done by PCA. In this `D`-dimensional space we can visualize the graph,
+ or use it as starting position for a force based layout.
 
 ## Usage
 
