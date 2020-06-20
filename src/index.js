@@ -2,9 +2,15 @@ const Matrix = require('./Matrix');
 const powerIteration = require('./powerIteration');
 
 /**
+ * This function creates high dimensional layout for a given graph.
+ * 
+ * Once the layout is created - positions in lower dimensions are already know.
+ * At the moment the graphs are considered to be undirected an unweighted.
  * 
  * @param {*} graph - ngraph.graph instance (https://github.com/anvaka/ngraph.graph)
- * @param {*} options 
+ * @param {*} options - layout configuration
+ * @param {number} options.pivotCount - dimensionality of the initial embedding
+ * @param {number} options.dimensions - dimensionality of `getNodePosition`
  * 
  * @see http://www.wisdom.weizmann.ac.il/~harel/papers/highdimensionalGD.pdf
  */
@@ -37,7 +43,8 @@ module.exports = function createLayout(graph, options = {}) {
 
   return {
     getNodePosition,
-    getPivotNodes
+    getPivotNodes,
+    getLayoutDimensionsCount
   }
 
   function getNodePosition(nodeId) {
@@ -47,6 +54,10 @@ module.exports = function createLayout(graph, options = {}) {
 
   function getPivotNodes() {
     return pivotNodes;
+  }
+
+  function getLayoutDimensionsCount() {
+    return layoutDimensions;
   }
 
   function computeHighDimensionalLayout(pivot) {

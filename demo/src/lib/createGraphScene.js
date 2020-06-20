@@ -34,7 +34,7 @@ export default function createGraphScene(canvas) {
       cancelAnimationFrame(rafHandle);
     }
     scene = initScene();
-    graph = findLargestComponent(newGraph);
+    graph = findLargestComponent(newGraph, 1)[0];
 
     if (desiredLayout && desiredLayout !== layoutName) {
       layoutName = desiredLayout;

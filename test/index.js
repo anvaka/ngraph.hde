@@ -9,9 +9,7 @@ test('it produces layout', t => {
   graph.addLink(2, 3);
   graph.addLink(1, 3);
 
-  
   let layout = createLayout(graph);
-  console.log(layout.getNodePosition(1)); // returns []
   graph.forEachNode(node => {
     let pos = layout.getNodePosition(node.id);
     t.ok(Number.isFinite(pos[0]), 'x is defined for ' + node.id);

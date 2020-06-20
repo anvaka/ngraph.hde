@@ -41,11 +41,11 @@ let createGraph = require('ngraph.graph');
 let graph = createGraph(); // your graph.
 graph.addLink(1, 2);
 graph.addLink(2, 3);
-graph.addLink(1, 4);
+graph.addLink(1, 3);
 // set up nodes/vertices and then:
 
 let layout = createLayout(graph);
-layout.getNodePosition(1); // returns [-0.7, 0.7]
+layout.getNodePosition(1); // returns [0.39, -0.72]
 ```
 
 Current version of the library doesn't support graphs with multiple disconnected components.

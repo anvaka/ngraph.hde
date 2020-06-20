@@ -1,6 +1,10 @@
 import createGraph from 'ngraph.graph';
 
-export default function findLargestComponent(graph) {
+/**
+ * Returns array of first `count` largest connected components 
+ * of the `graph`
+ */
+export default function findLargestComponent(graph, count) {
   var nodeIdToComponentId = new Map();
 
   var connectedComponents = [];
@@ -26,16 +30,20 @@ export default function findLargestComponent(graph) {
     lastComponentId += 1;
   });
 
-  let largestComponent = connectedComponents.sort((a, b) => b.size - a.size)[0];
+  return connectedComponents.sort((a, b) => b.size - a.size)
+    .slice(0, count)
+    .map(largestComponent => {
+      let subGraph = createGraph();
+      // not the most efficient way, as we iterate over every single link.
+      // This could be improved, for example by performing bfs from the component
+      graph.forEachLink(link => {
+        if (largestComponent.has(link.fromId)) {
+          subGraph.addLink(link.fromId, link.toId);
+        }
+      })
 
-  let subGraph = createGraph();
-  graph.forEachLink(link => {
-    if (largestComponent.has(link.fromId)) {
-      subGraph.addLink(link.fromId, link.toId);
-    }
-  })
-
-  return subGraph;
+      return subGraph;
+    });
 }
 
 function bfs(graph, startFromNodeId, visitor) {
