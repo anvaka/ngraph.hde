@@ -56,7 +56,7 @@ You'd have to first [find the connected components](https://github.com/anvaka/ng
 
 Layout supports a few options:
 
-```
+``` js
 let layout = createLayout(graph, {
   // Defines number of dimensions in `M` space. If value is larger than number
   // of nodes, then number of nodes is used by default.
