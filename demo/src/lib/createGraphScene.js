@@ -47,7 +47,7 @@ export default function createGraphScene(canvas) {
     layout = createForceLayout(graph, layoutName);
     // This is our "initialization" bit with HDE
     let start = performance.now();
-    let hde = createHighLayout(graph, {dimensions: (is3d ? 3 : 2) + 5});
+    let hde = createHighLayout(graph, {dimensions: is3d ? 3 : 2});
     let end = performance.now() - start;
     let time = Math.round(end) + 'ms';
 
