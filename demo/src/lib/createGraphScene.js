@@ -1,4 +1,4 @@
-import {createScene} from 'w-gl';
+import {createScene, createGuide} from 'w-gl';
 import LineCollection from './LineCollection';
 import PointCollection from './PointCollection';
 import bus from './bus';
@@ -12,7 +12,7 @@ export default function createGraphScene(canvas) {
   // Since graph can be loaded dynamically, we have these uninitialized
   // and captured into closure. loadGraph will do the initialization
   let graph, layout;
-  let scene, nodes, lines;
+  let scene, nodes, lines, guide;
 
   let layoutName;
   let layoutSteps = 0; // how many frames shall we run layout?
@@ -39,24 +39,34 @@ export default function createGraphScene(canvas) {
     if (desiredLayout && desiredLayout !== layoutName) {
       layoutName = desiredLayout;
     }
+    let is3d = layoutName.match(/3d/);
+    if (is3d) {
+      guide = createGuide(scene, {showGrid: true, lineColor: 0xffffff10, maxAlpha: 0x20});
+    }
     // this is a standard force layout
     layout = createForceLayout(graph, layoutName);
     // This is our "initialization" bit with HDE
     let start = performance.now();
-    let hde = createHighLayout(graph);
+    let hde = createHighLayout(graph, {dimensions: (is3d ? 3 : 2) + 5});
     let end = performance.now() - start;
     let time = Math.round(end) + 'ms';
 
 
     let minX = Infinity, minY = Infinity;
     let maxX = -Infinity, maxY = -Infinity;
+    let scale = 2.5;
     graph.forEachNode(node => {
       let pos = hde.getNodePosition(node.id);
-      let x = pos[0] * 2.5;
-      let y = pos[1] * 2.5;
+      let x = pos[0] * scale;
+      let y = pos[1] * scale;
       if (x < minX) minX = x; if (x > maxX) maxX = x;
       if (y < minY) minY = y; if (y > maxY) maxY = y;
-      layout.setNodePosition(node.id, x, y)
+
+      if (is3d)  {
+        layout.setNodePosition(node.id, x, y, pos[2] * scale)
+      } else {
+        layout.setNodePosition(node.id, x, y)
+      }
     });
 
     setSceneSize(Math.max(maxX - minX, maxY - minY));

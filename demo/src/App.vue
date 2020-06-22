@@ -28,7 +28,7 @@ import loadGraph from './lib/loadGraph';
 import bus from './lib/bus';
 import queryState from 'query-state';
 
-let layouts = ['ngraph.forcelayout', 'd3-force'];
+let layouts = ['ngraph.forcelayout', 'd3-force', 'ngraph.forcelayout3d'];
 let appState = queryState({graph: 'Miserables'}, { useSearch: true });
 
 export default {

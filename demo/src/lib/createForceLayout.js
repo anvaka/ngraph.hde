@@ -1,12 +1,22 @@
 import createLayout from 'ngraph.forcelayout';
+import create3dLayout from 'ngraph.forcelayout3d';
 import * as d3 from 'd3-force';
 
 export default function createForceLayout(graph, layoutName) {
   if (layoutName === 'd3-force') {
     return createD3Layout(graph);
   }
+  if (layoutName === 'ngraph.forcelayout') {
+    return createLayout(graph, {
+      timeStep: 0.5,
+      springLength: 10,
+      springCoeff: 0.8,
+      gravity: -12,
+      dragCoeff: 0.9,
+    });
+  }
 
-  return createLayout(graph, {
+  return create3dLayout(graph, {
     timeStep: 0.5,
     springLength: 10,
     springCoeff: 0.8,

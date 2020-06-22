@@ -14,6 +14,7 @@
     "miserables": "^2.0.0",
     "ngraph.events": "^1.0.0",
     "ngraph.forcelayout": "^1.0.0",
+    "ngraph.forcelayout3d": "^1.0.0",
     "ngraph.fromdot": "^6.0.0",
     "ngraph.fromjson": "^3.0.0",
     "ngraph.generators": "^19.0.0",
