@@ -1,6 +1,6 @@
 {
   "name": "ngraph.hde",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "High dimensional embedding of a graph",
   "main": "src/index.js",
   "scripts": {
