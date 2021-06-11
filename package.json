@@ -31,7 +31,6 @@
     "tap": "^14.10.7"
   },
   "dependencies": {
-    "mc": "^1.0.6",
     "ngraph.random": "^1.0.0"
   }
 }
