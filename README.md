@@ -23,7 +23,7 @@ First, the graph is projected into `M`-dimensional space. In this space adjacent
 close to each other. By default `M` has 50 dimensions.
 
 Then from this `M` dimensional space we crash graph back into 2D or 3D, or any other `D < M` where you want
-to visualize the graph. The "crash" is a done by PCA. In this `D`-dimensional space we can visualize the graph,
+to visualize the graph. The "crash" is done by PCA. In this `D`-dimensional space we can visualize the graph,
  or use it as starting position for a force based layout.
 
 ## Usage
