@@ -4,7 +4,7 @@
   "description": "High dimensional embedding of a graph",
   "main": "src/index.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "tap --branches=50 --lines=50 --statements=50 --functions=50 test/*.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   "devDependencies": {
     "miserables": "^2.0.0",
     "ngraph.graph": "^19.1.0",
-    "tap": "^14.10.7"
+    "tap": "^15.0.9"
   },
   "dependencies": {
     "ngraph.random": "^1.0.0"

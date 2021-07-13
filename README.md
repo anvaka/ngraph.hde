@@ -1,5 +1,8 @@
 # ngraph.hde
 
+[![build status](https://github.com/anvaka/ngraph.hde/actions/workflows/tests.yaml/badge.svg)](https://github.com/anvaka/ngraph.hde/actions/workflows/tests.yaml)
+
+
 This package implements high dimensional graph layout with `O(m*(|V| + |E|))` time complexity.
 
 While the layout doesn't necessary look appealing for all possible graphs, this package
