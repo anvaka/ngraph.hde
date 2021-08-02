@@ -41,7 +41,7 @@ test('it produces 4d layout for miserables', t => {
 
   graph.forEachNode(node => {
     let pos = layout.getNodePosition(node.id);
-    t.equals(pos.length, 4);
+    t.equal(pos.length, 4);
     for (let i = 0; i < 4; ++i) {
       t.ok(Number.isFinite(pos[i]), i + ' is defined for ' + node.id);
     }
