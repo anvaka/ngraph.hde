@@ -1,5 +1,6 @@
 const Matrix = require('./Matrix');
 const powerIteration = require('./powerIteration');
+const createRandom = require('ngraph.random');
 
 /**
  * This function creates high dimensional layout for a given graph.
@@ -26,6 +27,7 @@ module.exports = function createLayout(graph, options = {}) {
    */
   let layoutDimensions = (Number.isFinite(options.dimensions) && options.dimensions > 0) ? options.dimensions : 2;
 
+  let random = createRandom(42);
   let nodeIdToNumber = new Map();
   let nodes = [];
   graph.forEachNode(node => {
@@ -69,8 +71,25 @@ module.exports = function createLayout(graph, options = {}) {
       pivotNodes.push(pivot);
       addRow(matrix, i, pivot);
 
-      let indexOfMaxValue = bfsDist.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
-      pivot = nodes[indexOfMaxValue];
+      let nextPivotIndex = bfsDist.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+      // alternative sampling mechanism:
+      // let totalDist = 0;
+      // for (let j = 0; j < bfsDist.length; ++j) {
+      //   totalDist += bfsDist[j];
+      // }
+      // let sampleProbability = random.next(totalDist);
+
+      // let nextPivotIndex;
+      // let cumulativeProbability = 0;
+      // for (let j = 0; j < bfsDist.length; ++j) {
+      //   cumulativeProbability += bfsDist[j];
+      //   if (cumulativeProbability > sampleProbability) {
+      //     nextPivotIndex = j;
+      //     break;
+      //   }
+      // }
+      // bfsDist[nextPivotIndex] = 0;
+      pivot = nodes[nextPivotIndex];
     }
 
     return {matrix, pivotNodes};
