@@ -1,32 +1,30 @@
 <template>
-  <div id="app">
-    <h2>Demo of <a href="https://github.com/anvaka/ngraph.hde" class='source'>ngraph.hde</a> for initial positions</h2>
-    <div class='content'>
-      1. Select a graph: <select v-model='selectedGraph' :disable='loading'>
-        <option v-for="graph in graphs" :key='graph' :value='graph'>{{graph}}</option>
-      </select>
-      <div v-if='stats'>
-        2. Computed initial positions for <span class='number'>{{stats.nodeCount}}</span> nodes <span class='number'>{{stats.linkCount}}</span> edges in
-        <span class='number'>{{stats.time}}</span>
-      </div>
-      <div v-if='!loading && stats' class='layout-box'>
-        3. (optional) To make {{stepCount}} 
-        layout steps with <select v-model='selectedLayout'>
-          <option v-for="layout in layouts" :key='layout' :value='layout'>{{layout}}</option>
-        </select> layout <a href="#" @click.prevent='runLayout'>CLICK HERE</a> 
-      </div>
-
-      <div v-if='loading'>Loading graph...</div>
+  <h2>Demo of <a href="https://github.com/anvaka/ngraph.hde" class='source'>ngraph.hde</a> for initial positions</h2>
+  <div class='content'>
+    1. Select a graph: <select v-model='selectedGraph' :disable='loading'>
+      <option v-for="graph in graphs" :key='graph' :value='graph'>{{graph}}</option>
+    </select>
+    <div v-if='stats'>
+      2. Computed initial positions for <span class='number'>{{stats.nodeCount}}</span> nodes <span class='number'>{{stats.linkCount}}</span> edges in
+      <span class='number'>{{stats.time}}</span>
     </div>
+    <div v-if='!loading && stats' class='layout-box'>
+      3. (optional) To make {{stepCount}} 
+      layout steps with <select v-model='selectedLayout'>
+        <option v-for="layout in layouts" :key='layout' :value='layout'>{{layout}}</option>
+      </select> layout <a href="#" @click.prevent='runLayout'>CLICK HERE</a> 
+    </div>
+
+    <div v-if='loading'>Loading graph...</div>
   </div>
 </template>
 
 <script>
-import createGraphScene from './lib/createGraphScene';
-import getAvailableGraphs from './lib/getAvailableGraphs';
-import loadGraph from './lib/loadGraph';
-import bus from './lib/bus';
 import queryState from 'query-state';
+import createGraphScene from './lib/createGraphScene.js';
+import getAvailableGraphs from './lib/getAvailableGraphs.js';
+import loadGraph from './lib/loadGraph.js';
+import bus from './lib/bus.js';
 
 let layouts = ['ngraph.forcelayout', 'd3-force', 'ngraph.forcelayout3d'];
 let appState = queryState({graph: 'Miserables'}, { useSearch: true });

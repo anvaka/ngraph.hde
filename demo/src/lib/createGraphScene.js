@@ -1,10 +1,10 @@
+import createHighLayout from 'ngraph.hde';
 import {createScene, createGuide} from 'w-gl';
-import LineCollection from './LineCollection';
-import PointCollection from './PointCollection';
-import bus from './bus';
-import createHighLayout from '../../../src/index'
-import createForceLayout from './createForceLayout';
-import findLargestComponent from './findLargestComponent';
+import LineCollection from './LineCollection.js';
+import PointCollection from './PointCollection.js';
+import bus from './bus.js';
+import createForceLayout from './createForceLayout.js';
+import findLargestComponent from './findLargestComponent.js';
 
 export default function createGraphScene(canvas) {
   let drawLinks = true;

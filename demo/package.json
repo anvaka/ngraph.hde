@@ -1,37 +1,31 @@
 {
-  "name": "graph-starter",
+  "name": "ngraph.hde.demo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "start": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "core-js": "^3.4.3",
     "d3-force": "^2.0.1",
     "miserables": "^2.0.0",
     "ngraph.events": "^1.0.0",
-    "ngraph.forcelayout": "^1.0.0",
-    "ngraph.forcelayout3d": "^1.0.0",
-    "ngraph.fromdot": "^6.0.0",
-    "ngraph.fromjson": "^3.0.0",
-    "ngraph.generators": "^19.0.0",
-    "ngraph.graph": "^19.1.0",
+    "ngraph.forcelayout": "^3.3.0",
+    "ngraph.fromdot": "^7.0.0",
+    "ngraph.fromjson": "^3.1.0",
+    "ngraph.generators": "^20.0.0",
+    "ngraph.graph": "^20.0.0",
+    "ngraph.hde": "^1.0.1",
     "query-state": "^4.3.0",
-    "vue": "^2.6.10",
-    "w-gl": "^0.12.0"
+    "vue": "^3.2.33",
+    "w-gl": "^0.21.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.6.10"
+    "@vitejs/plugin-vue": "^2.3.1",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "vite": "^2.9.5"
   }
 }

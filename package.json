@@ -27,7 +27,7 @@
   "homepage": "https://github.com/anvaka/ngraph.hde#readme",
   "devDependencies": {
     "miserables": "^2.0.0",
-    "ngraph.graph": "^19.1.0",
+    "ngraph.graph": "^20.0.0",
     "tap": "^16.3.0"
   },
   "dependencies": {

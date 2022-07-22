@@ -1,5 +1,4 @@
 import createLayout from 'ngraph.forcelayout';
-import create3dLayout from 'ngraph.forcelayout3d';
 import * as d3 from 'd3-force';
 
 export default function createForceLayout(graph, layoutName) {
@@ -10,18 +9,19 @@ export default function createForceLayout(graph, layoutName) {
     return createLayout(graph, {
       timeStep: 0.5,
       springLength: 10,
-      springCoeff: 0.8,
+      springCoefficient: 0.8,
       gravity: -12,
-      dragCoeff: 0.9,
+      dragCoefficient: 0.9,
     });
   }
 
-  return create3dLayout(graph, {
+  return createLayout(graph, {
     timeStep: 0.5,
     springLength: 10,
-    springCoeff: 0.8,
+    springCoefficient: 0.8,
     gravity: -12,
-    dragCoeff: 0.9,
+    dragCoefficient: 0.9,
+    dimensions: 3,
   });
 }
 
