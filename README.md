@@ -16,7 +16,7 @@ See the demo here: https://anvaka.github.io/ngraph.hde/
 
 ![demo](https://i.imgur.com/G25jKM1.png)
 
-Demo's source code is [here](https://github.com/anvaka/ngraph.hde/tree/master/demo)
+Demo's source code is [here](https://github.com/anvaka/ngraph.hde/tree/main/demo)
 
 ## How does it work?
 
@@ -52,7 +52,7 @@ layout.getNodePosition(1); // returns [0.39, -0.72]
 ```
 
 Current version of the library doesn't support graphs with multiple disconnected components.
-You'd have to first [find the connected components](https://github.com/anvaka/ngraph.hde/blob/master/demo/src/lib/findLargestComponent.js) and then use layout on connected parts.
+You'd have to first [find the connected components](https://github.com/anvaka/ngraph.hde/blob/main/demo/src/lib/findLargestComponent.js) and then use layout on connected parts.
 
 
 ### Options
